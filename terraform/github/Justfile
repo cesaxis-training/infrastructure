@@ -1,0 +1,32 @@
+set dotenv-load
+set export := true
+
+_default:
+  @just --list --unsorted
+
+init:
+  terraform init
+
+install:
+  @just init
+
+upgrade:
+  terraform init -upgrade
+
+reconfigure:
+  terraform init -reconfigure
+
+plan:
+  terraform plan
+
+apply:
+  terraform apply
+
+lint:
+  terraform fmt
+
+import resource id:
+  terraform import '{{ resource }}' '{{ id }}'
+
+destroy resource:
+  terraform destroy -target "{{ resource }}"
