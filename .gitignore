@@ -1,0 +1,6 @@
+.terraform/
+*.tfvars
+plan
+errored.tfstate
+account.json
+.env
