@@ -6,6 +6,8 @@ resource "github_repository" "infrastructure" {
   auto_init  = true
   visibility = "public"
 
+  has_issues = true
+
   topics = ["terraform", "infrastructure", "ansible", "devops-tools"]
 }
 
@@ -32,6 +34,8 @@ resource "github_repository" "frontend" {
   auto_init  = true
   visibility = "public"
 
+  has_issues = true
+
   topics = ["frontend", "javascript", "devops-tools"]
 }
 
@@ -57,6 +61,8 @@ resource "github_repository" "backend" {
 
   auto_init  = true
   visibility = "public"
+
+  has_issues = true
 
   topics = ["backend", "python", "devops-tools"]
 }
