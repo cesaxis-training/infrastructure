@@ -1,0 +1,12 @@
+_default:
+  @just --list --unsorted
+
+docker-build:
+  docker build -t ansible-testing .
+
+docker-run:
+  docker run -it -v $(PWD):/ansible ansible-testing
+
+test-playbook playbook:
+  docker run -it -v $(PWD):/ansible ansible-testing ansible-playbook {{ playbook }} --limit 'local'
+
