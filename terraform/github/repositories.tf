@@ -104,7 +104,7 @@ resource "github_repository" "org_readme" {
   description = "GitHub repository settings"
 
   auto_init  = true
-  visibility = "private"
+  visibility = "public"
 
   topics = ["github"]
 }
