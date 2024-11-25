@@ -21,5 +21,5 @@ resource "digitalocean_firewall" "prod" {
     source_addresses = ["0.0.0.0/0"]  # Allow HTTP from anywhere
   }
 
-  droplet_ids = [digitalocean_droplet.prod.id]
+  droplet_ids = [digitalocean_droplet.web1.id]
 }
