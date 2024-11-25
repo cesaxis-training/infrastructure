@@ -10,7 +10,7 @@ resource "digitalocean_firewall" "prod" {
   }
 
   inbound_rule {
-    protocol = "http"
+    protocol = "tcp"
     port_range = "443"
     source_addresses = ["0.0.0.0/0"]
   }
