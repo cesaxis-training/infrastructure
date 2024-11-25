@@ -1,7 +1,27 @@
 locals {
   admins = ["jserpapinto"]
 
-  members = []
+  members = [
+    "rubenrocha30",
+    "marinadixis",
+    "davidfnatixis",
+    "petermoody1",
+    "Jonybullet",
+    "JMaia02",
+    "filipeazvd",
+    "iiscas",
+    "noelia1804",
+    "Xlane2096",
+    "povoaxis",
+    "CarolS253",
+    "tou",
+    "abmsaldanha",
+    "leonorlacerda02",
+    "Denchik-bool",
+    "PedroATCosta",
+    "MIXI-txt",
+    "Niokeres-ballondor"
+  ]
 }
 
 resource "github_membership" "admins" {
