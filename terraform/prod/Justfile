@@ -30,3 +30,6 @@ import resource id:
 
 destroy resource:
   terraform destroy -target "{{ resource }}"
+
+destroy-all:
+  terraform destroy

@@ -1,13 +1,11 @@
-# Create a new Web Droplet in the nyc2 region
-#resource "digitalocean_droplet" "web" {
- # image   = "ubuntu-20-04-x64"
-  #name    = "web-1"
-  #region  = "nyc2"
-  #size    = "s-1vcpu-1gb"
-  #backups = true
-  #backup_policy {
-   # plan    = "weekly"
-    #weekday = "TUE"
-    #hour    = 8
- # }
-#}
+resource "digitalocean_droplet" "web1" {
+   image   = "ubuntu-20-04-x64"
+   name    = "web-1"
+   region  = "ams3"
+   size    = "s-1vcpu-1gb"
+   backups = false
+  
+   #vpc_uuid = digitalocean_vpc.prod.id
+
+   ssh_keys = ["0e:29:ea:0f:c3:ac:b6:37:ff:2f:df:0d:53:b6:96:7d"]
+}
