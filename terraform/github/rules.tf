@@ -3,7 +3,7 @@ resource "github_repository_ruleset" "infrastructure_protect_default_branch" {
   name        = "protect-default-branch"
   repository  = github_repository.infrastructure.name
   target      = "branch"
-  enforcement = "active"
+  enforcement = "disabled"
 
   conditions {
     ref_name {
@@ -39,7 +39,7 @@ resource "github_repository_ruleset" "infrastructure_protect_default_branch" {
 #   name        = "conventional-commits"
 #   repository  = github_repository.infrastructure.name
 #   target      = "branch"
-#   enforcement = "active"
+#   enforcement = "disabled"
 
 #   conditions {
 #     ref_name {
@@ -63,7 +63,7 @@ resource "github_repository_ruleset" "frontend_require_branch_protection" {
   name        = "require-branch-protection"
   repository  = github_repository.frontend.name
   target      = "branch"
-  enforcement = "active"
+  enforcement = "disabled"
 
   conditions {
     ref_name {
@@ -99,7 +99,7 @@ resource "github_repository_ruleset" "frontend_require_branch_protection" {
 #   name        = "conventional-commits"
 #   repository  = github_repository.frontend.name
 #   target      = "branch"
-#   enforcement = "active"
+#   enforcement = "disabled"
 
 #   conditions {
 #     ref_name {
@@ -124,7 +124,7 @@ resource "github_repository_ruleset" "backend_require_branch_protection" {
   name        = "require-branch-protection"
   repository  = github_repository.backend.name
   target      = "branch"
-  enforcement = "active"
+  enforcement = "disabled"
 
   conditions {
     ref_name {
@@ -160,7 +160,7 @@ resource "github_repository_ruleset" "backend_require_branch_protection" {
 #   name        = "conventional-commits"
 #   repository  = github_repository.backend.name
 #   target      = "branch"
-#   enforcement = "active"
+#   enforcement = "disabled"
 
 #   conditions {
 #     ref_name {
