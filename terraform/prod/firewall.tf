@@ -21,6 +21,12 @@ resource "digitalocean_firewall" "prod" {
     source_addresses = ["0.0.0.0/0"]  # Allow HTTP from anywhere
   }
 
+   # Inbound Rules
+  inbound_rule {
+    protocol         = "icmp"
+    source_addresses = ["0.0.0.0/0", "::/0"] # Allow pings from any source
+  }
+
   outbound_rule {
     protocol         = "tcp"
     port_range       = "all"
@@ -31,6 +37,12 @@ resource "digitalocean_firewall" "prod" {
     protocol         = "udp"
     port_range       = "all"
     destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+  
+   # Outbound Rules
+  outbound_rule {
+    protocol             = "icmp"
+    destination_addresses = ["0.0.0.0/0", "::/0"] # Allow pings to any destination
   }
 
   droplet_ids = [digitalocean_droplet.web1.id]
