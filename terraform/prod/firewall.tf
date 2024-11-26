@@ -21,5 +21,17 @@ resource "digitalocean_firewall" "prod" {
     source_addresses = ["0.0.0.0/0"]  # Allow HTTP from anywhere
   }
 
+  outbound_rule {
+    protocol         = "tcp"
+    port_range       = "all"
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  outbound_rule {
+    protocol         = "udp"
+    port_range       = "all"
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
   droplet_ids = [digitalocean_droplet.web1.id]
 }
