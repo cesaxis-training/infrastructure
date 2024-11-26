@@ -9,3 +9,5 @@ resource "digitalocean_droplet" "web1" {
 
    ssh_keys = ["0e:29:ea:0f:c3:ac:b6:37:ff:2f:df:0d:53:b6:96:7d"]
 }
+
+
