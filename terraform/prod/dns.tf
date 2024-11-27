@@ -19,8 +19,3 @@ resource "digitalocean_record" "api" {
   ttl    = 3600
 }
 
-#droplet_ip = [digitalocean_droplet.web.ipv4]
-
-
-
-
