@@ -1,0 +1,7 @@
+cesaxis.pt {
+  reverse_proxy cesaxis_frontend:3000
+}
+
+api.cesaxis.pt {
+  reverse_proxy cesaxis_backend:5000
+}

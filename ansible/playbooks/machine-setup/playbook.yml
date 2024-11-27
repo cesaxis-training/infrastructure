@@ -5,6 +5,86 @@
   become: true
 
   tasks:
-    - name: Hello World
-      debug:
-        msg: "Hello World!"
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 60
+
+    - name: Install initial dependencies
+      apt:
+        name:
+          - ca-certificates
+          - curl
+        state: present
+
+    - name: Create keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Download Docker's GPG key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: '0644'
+
+    - name: Add Docker repository
+      shell: |
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+        tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    - name: Update apt cache (after adding Docker repo)
+      apt:
+        update_cache: yes
+
+    - name: Install Docker packages
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+        state: present
+
+    - name: Create Docker network
+      docker_network:
+        name: cesaxis_network
+        state: present
+
+    - name: Create Caddy config directory
+      file:
+        path: /etc/caddy
+        state: directory
+        mode: '0755'
+
+    - name: Copy Caddy configuration
+      copy:
+        src: files/Caddyfile
+        dest: /etc/caddy/Caddyfile
+        mode: '0644'
+      notify: Restart Caddy container
+
+    - name: Run Caddy container
+      docker_container:
+        name: caddy
+        image: caddy:latest
+        state: started
+        restart_policy: always
+        networks:
+          - name: cesaxis_network
+        ports:
+          - "80:80"
+          - "443:443"
+        volumes:
+          - /etc/caddy/Caddyfile:/etc/caddy/Caddyfile
+          - caddy_data:/data
+          - caddy_config:/config
+
+  handlers:
+    - name: Restart Caddy container
+      docker_container:
+        name: caddy
+        state: started
+        restart: yes
