@@ -1,28 +1,7 @@
 locals {
-  infrastructure_members = [
-    "CarolS253",
-    "marinadixis",
-    "rubenrocha30",
-    "filipeazvd",
-    "Xlane2096",
-    "JMaia02",
-    "Jonybullet",
-    "petermoody1",
-    "Denchik-bool"
-  ]
-  frontend_members = [
-    "abmsaldanha",
-    "povoaxis",
-    "leonorlacerda02",
-    "Niokeres-ballondor"
-  ]
-  backend_members = [
-    "iiscas",
-    "noelia1804",
-    "MIXI-txt",
-    "davidfnatixis",
-    "PedroATCosta",
-  ]
+  infrastructure_members = []
+  frontend_members = []
+  backend_members = []
 }
 
 # Infrastructure
